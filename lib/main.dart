@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/appbar.dart';
-import 'qr.dart';
+import 'screens/paymentscreen.dart';
+import 'screens/qr.dart';
 
 void main() {
   runApp(App());
@@ -11,7 +12,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        // '/': (context) => App(),
+        '/pay': (context) => Payment(),
         '/qr': (context) => Qr(),
       },
       theme: ThemeData(
