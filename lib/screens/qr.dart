@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/paymentscreen.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
 
@@ -13,11 +14,25 @@ class _Qr extends State<Qr> {
     if (cameraStatus.isGranted) {
       String? qrdata = await scanner.scan();
       print(qrdata);
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Payment(
+              text: qrdata,
+            ),
+          ));
     } else {
       var isGrant = await Permission.camera.request();
       if (isGrant.isGranted) {
         String? qrdata = await scanner.scan();
         print(qrdata);
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Payment(
+                text: qrdata,
+              ),
+            ));
       }
     }
   }

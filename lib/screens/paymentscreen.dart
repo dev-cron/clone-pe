@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Payment extends StatelessWidget {
-  const Payment({Key? key}) : super(key: key);
+  final String? text;
+  const Payment({Key? key, @required this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +22,15 @@ class Payment extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              color: Colors.red,
-              height: 75,
+          ListTile(
+            contentPadding: EdgeInsets.only(left: 0),
+            leading: IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.account_circle_outlined),
+              iconSize: 50,
             ),
+            title: Text(text ?? 'nothing'),
+            subtitle: Text("this is a subtitle"),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
