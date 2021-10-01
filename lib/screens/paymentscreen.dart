@@ -3,9 +3,30 @@ import 'package:flutter/material.dart';
 class Payment extends StatelessWidget {
   final String? text;
   const Payment({Key? key, @required this.text}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    String ans = "";
+
+    if (text != null) {
+      for (int i = 0; i < text!.length; i++) {
+        if (text![i] == '=') {
+          if (text![i + 1].contains(RegExp(r'[A-Z]'))) {
+            for (int j = 1; j <= 13; j++) {
+              ans += text![i + j];
+            }
+            break;
+          } else {
+            for (int j = 1; j <= 10; j++) {
+              ans += text![i + j];
+            }
+            break;
+          }
+        }
+      }
+    }
+
+    print(ans);
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -30,14 +51,15 @@ class Payment extends StatelessWidget {
               iconSize: 50,
             ),
             title: Text(text ?? 'nothing'),
-            subtitle: Text("this is a subtitle"),
+            subtitle: Text(ans),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.deepPurple, width: 2.0),
+                  borderSide:
+                      new BorderSide(color: Colors.deepPurple, width: 2.0),
                 ),
                 hintText: 'Enter amount',
                 prefixIcon: Icon(Icons.money),

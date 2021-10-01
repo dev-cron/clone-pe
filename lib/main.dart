@@ -12,7 +12,9 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        '/pay': (context) => Payment(),
+        '/pay': (context) => Payment(
+              text: null,
+            ),
         '/qr': (context) => Qr(),
       },
       theme: ThemeData(
