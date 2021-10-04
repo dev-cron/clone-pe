@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'transaction.dart';
 
 class Payment extends StatelessWidget {
   final String? text;
-  const Payment({Key? key, @required this.text}) : super(key: key);
+  Payment({Key? key, @required this.text}) : super(key: key);
+
+  final _moneyController = TextEditingController();
+  final _messageController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     String ans = "";
@@ -50,12 +55,13 @@ class Payment extends StatelessWidget {
               icon: Icon(Icons.account_circle_outlined),
               iconSize: 50,
             ),
-            title: Text(text ?? 'nothing'),
+            title: Text('User name here'),
             subtitle: Text(ans),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
+              controller: _moneyController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderSide:
@@ -69,6 +75,7 @@ class Payment extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
+              controller: _messageController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderSide:
@@ -86,7 +93,17 @@ class Payment extends StatelessWidget {
             child: Align(
               alignment: FractionalOffset.bottomCenter,
               child: MaterialButton(
-                onPressed: () => {},
+                onPressed: () => {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Transaction(
+                          number: ans,
+                          name: _messageController.text,
+                          money: _moneyController.text,
+                        ),
+                      ))
+                },
                 child: Text('Send'),
               ),
             ),
@@ -96,5 +113,3 @@ class Payment extends StatelessWidget {
     );
   }
 }
-
-//list view me wrap karke dekh overflow k liye

@@ -9,12 +9,18 @@ class Qr extends StatefulWidget {
 }
 
 class _Qr extends State<Qr> {
+  @override
+  void initState() {
+    super.initState();
+    _qrScanner();
+  }
+
   Future _qrScanner() async {
     var cameraStatus = await Permission.camera.status;
     if (cameraStatus.isGranted) {
       String? qrdata = await scanner.scan();
       print(qrdata);
-      Navigator.push(
+      Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => Payment(
@@ -40,18 +46,9 @@ class _Qr extends State<Qr> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Scan & Pay'),
-        ),
-        body: Container(
-          child: Center(
-            child: ElevatedButton(
-              child: Text('Scan'),
-              onPressed: () {
-                _qrScanner();
-              },
-            ),
-          ),
-        ));
+      appBar: AppBar(
+        title: Text('Scan & Pay'),
+      ),
+    );
   }
 }

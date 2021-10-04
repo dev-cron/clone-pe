@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/appbar.dart';
+import 'package:flutter_application_1/screens/transaction.dart';
 import 'screens/paymentscreen.dart';
 import 'screens/qr.dart';
 
@@ -16,6 +17,7 @@ class App extends StatelessWidget {
               text: null,
             ),
         '/qr': (context) => Qr(),
+        '/transaction': (context) => Transaction(),
       },
       theme: ThemeData(
         primaryColor: Colors.purple[800],
