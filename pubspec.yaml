@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   qrscan: ^0.3.2
   permission_handler:
+  lottie: ^1.2.1
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +51,7 @@ flutter:
   assets:
     - assets/phonepe.jpg
     - assets/psl.jpg
+    - assets/done.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
